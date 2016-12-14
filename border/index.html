@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="UTF-8">
+	<title>border之特殊用法</title>
+</head>
+<style>
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	body{
+		background-color: #eee;
+		font-family: "Microsoft Yahei";
+	}
+	.container{
+		width: 1100px;
+		margin: 0 auto;
+		border: 1px solid #777;
+		border-radius: 5px;
+		padding: 10px;
+	}
+	.part-content{
+		padding-top: 20px;
+		text-indent: 2em;
+	}
+	.part{
+		margin-top: 20px;
+	}
+	.content-detail{
+		padding-top: 5px;
+		text-indent: 4em;
+		line-height: 30px;
+	}
+	.part-header{
+		padding:20px 0;
+	}
+	.box{
+		width: 150px;
+		height: 150px;
+		position: relative;
+		margin-bottom: 300px;
+	}
+	.dotted{
+		width: 100%;
+		height: 100%;
+		border: 149px dotted #cd0000;
+		position: absolute;
+		z-index: 2;
+	}
+	.innerbox1{
+		width: 300px;
+		height: 448px;
+		background-color: #cd0000;
+		position: absolute;
+		top: 0;
+		left: 75px;
+		z-index: 1;
+
+	}
+	.innerbox2{
+		width: 448px;
+		height: 300px;
+		background-color: #cd0000;
+		position: absolute;
+		top: 75px;
+		left: 0;
+		z-index: 1;
+	}
+	table{
+		padding-left: 2em;
+	}
+	.icon{
+		width: 120px;
+		height: 20px;
+		border-top: 60px double #ccc;
+		border-bottom: 20px solid #ccc;
+	}
+	.border-color-box{
+		width: 100px;
+		height: 100px;
+		border: 1px solid #ccc;
+		position: relative;
+		margin-bottom: 20px;
+	}
+	.border-color-box:before{
+		content:"";
+		display: block;
+		width: 60px;
+		height: 10px;
+		background: #ccc;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin:-5px 0 0 -30px;
+	}
+	.border-color-box:after{
+		content:"";
+		display: block;
+		width: 10px;
+		height: 60px;
+		background-color: #ccc;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin:-30px 0 0 -5px;
+	}
+	.border-color-box:hover{
+		border-color:#1C1CDE;
+	}
+	.border-color-box:hover:before,.border-color-box:hover:after{
+		background-color: #1C1CDE;
+	}
+
+	.add{
+		width: 100px;
+		height: 100px;
+		color: #ccc;
+		transition: color 0.25s;
+		border:1px solid;
+		position: relative;
+
+	}
+	.add:before{
+		content:"";
+		display: block;
+		color: #ccc;
+		width: 60px;
+		height: 10px;
+		border-top: 10px solid;
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		margin:-5px 0 0 -30px;
+	}
+	.add:after{
+		content:"";
+		display: block;
+		color: #ccc;
+		width: 10px;
+		height: 60px;
+		border-left: 10px solid;
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		margin:-30px 0 0 -5px;
+	}
+	.add:hover,.add:hover:before,.add:hover:after{
+		color: #f6c;
+	}
+	.bg{
+		width: 500px;
+		height: 100px;
+		background-color: #ddd;
+		border-right: 50px solid transparent;  
+		background-image: url(imgs/imooc-logo.png);
+		background-repeat: no-repeat;
+		background-position: 100% 50%;
+	}
+	.angle-box{
+		position: relative;
+	}
+	.angle{
+		position: absolute;
+		width: 0;
+		height: 0;
+		border-width: 424px 307px;
+		border-style: solid;
+		border-color: red transparent transparent transparent;
+		text-align: center;
+	}
+	.angle1{
+		transform: rotate(0deg);
+	}
+	.angle2{
+		transform: rotate(108deg);
+	}
+	.angle3{
+		transform: rotate(216deg);
+	}
+</style>
+<body>
+	<section class="part">
+		<div class="container">
+			<h2 class="part-header">border-width不支持百分比</h2>
+			<p class="part-content">
+				不支持百分比的原因：语义和使用场景决定的。边框并不会因为设备大而边框而变大。
+			</p>
+			<p class="part-content">
+				类似的还有：outline,box-shadow,text-shadow也不支持百分比
+			</p>
+			<p class="part-content">
+				border-width还支持关键字：thin,medium(默认值),thick
+			</p>
+			<p class="content-detail">
+				thin:薄薄的  1px
+			</p>
+			<p class="content-detail">
+				medium:薄厚均匀 3px 
+			</p>
+			<p class="content-detail">
+				thick: 厚厚的  5px 
+			</p>
+			<h2 class="part-header">为什么border-width的默认值是medium(3px)不是thin(1px)?</h2>
+			<p class="part-content">
+				因为border-style:double至少3px才有效果。
+			</p>
+		</div>
+	</section>
+
+	<section class="part">
+		<div class="container">
+			<h2 class="part-header">
+				border-style:dotted 在浏览器中差异
+			</h2>
+			<p class="part-content">
+				chrome/firefox中显示为方形
+			</p>
+			<p class="part-content">
+				IE中显示为圆形
+			</p>
+			<h2 class="part-header">
+				利用border-style:dotted 实现IE7，IE8下的圆角效果
+			</h2>
+			<div class="box">
+				<div class="dotted"></div>
+				<div class="innerbox1"></div>
+				<div class="innerbox2"></div>
+			</div>
+			<h2 class="part-header">
+				border-style:double的计算规则
+			</h2>
+			<p class="part-content">
+				实线宽度永远相等，中间间隔+1或者-1
+				
+			</p>
+			<p class="content-detail">
+				<table>
+					<tr>
+						<th>双线的宽度</th>
+						<th>实线宽度</th>
+						<th>间隔宽度</th>
+						<th>实线宽度</th>
+					</tr>
+					<tr>
+						<td>1px</td>
+						<td>0px</td>
+						<td>1px</td>
+						<td>0px</td>
+					</tr>
+					<tr>
+						<td>2px</td>
+						<td>1px</td>
+						<td>0px</td>
+						<td>1px</td>
+					</tr>
+					<tr>
+						<td>3px</td>
+						<td>1px</td>
+						<td>1px</td>
+						<td>1px</td>
+					</tr>
+					<tr>
+						<td>4px</td>
+						<td>1px</td>
+						<td>2px</td>
+						<td>1px</td>
+					</tr>
+					<tr>
+						<td>5px</td>
+						<td>2px</td>
+						<td>1px</td>
+						<td>2px</td>
+					</tr>
+					<tr>
+						<td>6px</td>
+						<td>2px</td>
+						<td>2px</td>
+						<td>2px</td>
+					</tr>
+					<tr>
+						<td>7px</td>
+						<td>2px</td>
+						<td>3px</td>
+						<td>2px</td>
+					</tr>
+					<tr>
+						<td>8px</td>
+						<td>3px</td>
+						<td>2px</td>
+						<td>3px</td>
+					</tr>
+					<tr>
+						<td>9px</td>
+						<td>3px</td>
+						<td>3px</td>
+						<td>3px</td>
+					</tr>
+					<tr>
+						<td>10px</td>
+						<td>3px</td>
+						<td>4px</td>
+						<td>3px</td>
+					</tr>
+				</table>
+			</p>
+			<h2 class="part-header">
+				利用border-style:double绘制三道杠图标
+			</h2>
+			<div class="icon"></div>
+		</div>
+	</section>
+
+	<section class="part">
+		<div class="container">
+			<h2 class="part-header">
+				border-color与color	
+			</h2>
+			<p class="part-content">
+				 border-color的默认颜色就是color的颜色。当没有指定border-color的时候，会使用color作为边框色
+			</p>
+			<p class="part-content">
+				类似的还有outline,box-shadow,text-shadow，当没有设置颜色时，会使用color作为其颜色
+			</p>
+			<h2 class="part-header">
+				border-color的实战应用之hover与图形变色
+			</h2>
+			<div class="border-color-box">
+			</div>
+			<div class="add"></div>
+		</div>
+	</section>
+
+	<section class="part">
+		<div class="container">
+			<h2 class="part-header">
+				border与backgroud定位
+			</h2>
+			<p class="part-content">
+				background定位的元素只能相对左上角数值进行定位，不能相对右下角进行定位。
+			</p>
+			<h3 class="part-content">
+				如果想让背景图片相对容器右侧进行定位，该怎么办呢？
+			</h3>
+			<p class="part-content">
+				解决办法之一：利用border实现。
+				因为背景图片在进行定位时，是不计算border区域的，默认是从padding区域开始定位
+			</p>
+
+			<div class="bg">
+				
+			</div>
+		</div>
+	</section>
+	<section class="part">
+		<div class="container">
+			<h2 class="part-header">
+				border与三角等图像的构建
+			</h2>
+			<p class="part-content angle-box">
+				<p class="angle angle1">1</p>
+				<p class="angle angle2">2</p>
+				<p class="angle angle3">3</p>
+			</p>
+		</div>
+	</section>
+</body>
+</html>
