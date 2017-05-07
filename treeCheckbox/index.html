@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.bootcss.com/jquery/1.11.3/jquery.js"></script>
+</head>
+
+<body>
+    <div class="wrapper"></div>
+    <script src="main.js"></script>
+    <script>
+    var data = [{
+        "value": "1",
+        "menuName": "父菜单1",
+        "distribution": "0", //默认选中情况  1选中  0未选中
+        "childMenus": [
+	        {
+	            "value": "2",
+	            "menuName": "子菜单",
+	            "distribution": "0",
+	            "childMenus": [
+		            {
+		                "value": "3",
+		                "menuName": "孙菜单1",
+		                "distribution": "0"
+		            },
+		            {
+		                "value": "4",
+		                "menuName": "孙菜单2",
+		                "distribution": "1"
+		            }, 
+		            {
+		                "value": "5",
+		                "menuName": "孙菜单3",
+		                "distribution": "0"
+		            }, 
+		            {
+		                "value": "6",
+		                "menuName": "孙菜单4",
+		                "distribution": "0"
+		            }
+	            ]
+	        },
+	        {
+	            "value": "11",
+	            "menuName": "子菜单6",
+	            "distribution": "0",
+	            "childMenus": [
+		            {
+		                "value": "12",
+		                "menuName": "孙菜单11",
+		                "distribution": "0"
+		            },
+		            {
+		                "value": "13",
+		                "menuName": "孙菜单12",
+		                "distribution": "0"
+		            }, 
+		            {
+		                "value": "14",
+		                "menuName": "孙菜单13",
+		                "distribution": "0"
+		            }, 
+		            {
+		                "value": "15",
+		                "menuName": "孙菜单14",
+		                "distribution": "0"
+		            }
+	            ]
+	        }
+        ]
+    }];
+
+    var html = window.treeCheckbox.buildUI($('<ul class="tree-checkbox-list">'), data);
+    $('.wrapper').append(html);
+    window.treeCheckbox.init($('.wrapper'));
+    </script>
+</body>
+
+</html>

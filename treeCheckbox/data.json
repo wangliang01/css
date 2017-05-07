@@ -1,0 +1,31 @@
+[{
+    "value": "1",
+    "menuName": "父菜单1",
+    "distribution": "0", //默认选中情况  1选中  0未选中
+    "childMenus": [{
+        "value": "2",
+        "menuName": "子菜单",
+        "distribution": "0",
+        "childMenus": [{
+            "value": "3",
+            "menuName": "孙菜单1",
+            "distribution": "0"
+            
+        }, {
+            "value": "4",
+            "menuName": "孙菜单2",
+            "distribution": "1"
+            
+        }, {
+            "value": "5",
+            "menuName": "孙菜单3",
+            "distribution": "1"
+            
+        }, {
+            "value": "6",
+            "menuName": "孙菜单4",
+            "distribution": "1"
+
+        }]
+    }]
+}]

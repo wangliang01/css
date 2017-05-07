@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>多重边框</title>
+    <!-- 自动补充css前缀 -->
+    <script src="https://cdn.bootcss.com/prefixfree/1.0.7/prefixfree.min.js"></script>
+    <style>
+    @keyframes rotate {
+    	to {
+    		/*transform: rotate(360deg) scale(0);*/
+    	}
+    }
+    .box {
+        width: 400px;
+        height: 300px;
+        margin: 100px 20px;
+        animation: rotate 3s linear infinite;
+        line-height: 300px;
+        text-align: center;
+        /*box-sizing: border-box;*/
+    }
+    
+    .border-multiple {
+        box-shadow: 0 0 0 10px #655, 0 0 0 20px green;
+    }
+    .outline{
+        background-color: #655;
+        border: 10px solid #655;
+        /*outline: 1px dotted #fff;*/
+        outline-offset: -15px;
+        border-radius: 5px;
+    }
+    .inner{
+        margin: 5px auto 0;
+        width: 390px;
+        height: 290px;
+        line-height: 300px;
+        border: 1px dotted #fff;
+        border-radius: 5px;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="box border-multiple">多重边框</div>
+    <div class="box outline">
+        <div class="inner"></div>
+    </div>
+    <script>
+    // 随机获得一个颜色
+    // function getRandomColor() {
+    //     return "#" + ("00000" + ((Math.random() * 16777215 + 0.5) >> 0).toString(16)).slice(-6);
+    // }
+    // var box = document.getElementsByClassName('box')[0];
+    
+
+   	// setInterval(function() {
+   	// 	box.style.boxShadow = '0 0 0 10px '+ getRandomColor() +', 0 0 0 20px ' + getRandomColor() + ', 0 0 0 30px ' + getRandomColor();
+   	// }, 1000);
+    </script>
+</body>
+
+</html>

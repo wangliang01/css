@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>一个半透明边框</title>
+    <!-- 自动补充css前缀 -->
+    <script src="https://cdn.bootcss.com/prefixfree/1.0.7/prefixfree.min.js"></script>
+    <style>
+    body {
+        background-color: yellowgreen;
+    }
+    
+    .box {
+        width: 200px;
+        height: 200px;
+        border: 10px solid hsla(0, 0%, 100%, .5);
+        background: #fff;
+        background-clip: padding-box;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+</body>
+
+</html>

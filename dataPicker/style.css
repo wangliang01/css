@@ -1,0 +1,66 @@
+.ui-datapicker-wrapper {
+  position: absolute;
+  display: none;
+  width: 240px;
+  font-size: 16px;
+  color: #666;
+  box-shadow: 2px 2px 8px 2px rgba(128, 128, 128, 0.2);
+}
+.ui-datapicker-wrapper.show {
+  display: block;
+}
+.ui-datapicker-wrapper .ui-datapicker-header {
+  padding: 0 20px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  background: #f0f0f0;
+  border-bottom: 1px solid #ccc;
+  font-weight: bold;
+}
+.ui-datapicker-wrapper .ui-datapicker-header .ui-datapicker-btn {
+  font-family: serif;
+  font-size: 20px;
+  width: 20px;
+  height: 50px;
+  line-height: 50px;
+  color: #1abc9c;
+  text-align: center;
+  cursor: pointer;
+  text-decoration: none;
+}
+.ui-datapicker-wrapper .ui-datapicker-header .ui-datapicker-prev-btn {
+  float: left;
+}
+.ui-datapicker-wrapper .ui-datapicker-header .ui-datapicker-next-btn {
+  float: right;
+}
+.ui-datapicker-wrapper .ui-datapicker-body table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.ui-datapicker-wrapper .ui-datapicker-body table th,
+.ui-datapicker-wrapper .ui-datapicker-body table td {
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+}
+.ui-datapicker-wrapper .ui-datapicker-body table tr {
+  display: flex;
+}
+.ui-datapicker-wrapper .ui-datapicker-body table th {
+  line-height: 40px;
+  height: 40px;
+  font-size: 12px;
+  flex: 1;
+}
+.ui-datapicker-wrapper .ui-datapicker-body table td {
+  flex: 1;
+  border: 1px solid #f0f0f0;
+  font-size: 10px;
+  cursor: pointer;
+  background-color: #ccc;
+}
+.ui-datapicker-wrapper .ui-datapicker-body table td.light {
+  background-color: #fff;
+}

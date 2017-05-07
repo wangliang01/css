@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>border-radius的运用</title>
+    <!-- 自动补充css前缀 -->
+    <script src="https://cdn.bootcss.com/prefixfree/1.0.7/prefixfree.min.js"></script>
+    <style>
+    @keyframes spin {
+        to {
+            transform: rotate(1turn);
+        }
+    }
+    
+    @keyframes spin-reverse {
+        to {
+            transform: rotate(-1turn);
+        }
+    }
+    @keyframes bg {
+    	100% {
+    		background-color: transparent;
+    	}
+    }
+    .part {
+        padding: 40px;
+        margin-bottom: 40px;
+        border: 1px solid #999;
+        border-radius: 2px;
+    }
+    
+    .wrapper {
+        display: inline-flex;
+    }
+    /*圆*/
+    
+    .circle {
+        margin-right: 40px;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+    }
+    /*半圆*/
+    
+    .half-circle-top {
+        margin-right: 40px;
+        width: 100px;
+        height: 50px;
+        border-radius: 50px 50px 0 0;
+        animation: spin 3s linear infinite;
+    }
+    
+    .half-circle-right {
+        margin-right: 40px;
+        width: 50px;
+        height: 100px;
+        border-radius: 0 50px 50px 0;
+        animation: spin-reverse 3s linear infinite;
+    }
+    
+    .half-circle-bottom {
+        margin-right: 40px;
+        width: 100px;
+        height: 50px;
+        border-radius: 0 0 50px 50px;
+        animation: spin 3s linear infinite;
+    }
+    
+    .half-circle-left {
+        margin-right: 40px;
+        width: 50px;
+        height: 100px;
+        border-radius: 50px 0 0 50px;
+        animation: spin-reverse 3s linear infinite;
+    }
+    
+    .half-circle-top-percentage {
+        margin-right: 40px;
+        width: 100px;
+        height: 50px;
+        border-radius: 50% 50% 0 0/100%;
+        animation: spin-reverse 3s linear infinite;
+    }
+    
+    .half-circle-right-percentage {
+        margin-right: 40px;
+        width: 50px;
+        height: 100px;
+        border-radius: 0 100% 100% 0/50%;
+        animation: spin 3s linear infinite;
+    }
+    
+    .half-circle-bottom-percentage {
+        margin-right: 40px;
+        width: 100px;
+        height: 50px;
+        border-radius: 0 0 50% 50%/100%;
+        animation: spin-reverse 3s linear infinite;
+    }
+    
+    .half-circle-left-percentage {
+        margin-right: 40px;
+        width: 50px;
+        height: 100px;
+        border-radius: 100% 0 0 100%/50%;
+        animation: spin 3s linear infinite;
+    }
+    /*扇形*/
+    
+    .fanshaped-top {
+        margin-right: 40px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50px 0 0 0;
+        animation: spin-reverse 3s linear infinite;
+    }
+    
+    .fanshaped-right {
+        margin-right: 40px;
+        width: 50px;
+        height: 50px;
+        border-radius: 0 50px 0 0;
+        animation: spin 3s linear infinite;
+    }
+    
+    .fanshaped-bottom {
+        margin-right: 40px;
+        width: 50px;
+        height: 50px;
+        border-radius: 0 0 50px 0;
+        animation: spin-reverse 3s linear infinite;
+    }
+    
+    .fanshaped-left {
+        margin-right: 40px;
+        width: 50px;
+        height: 50px;
+        border-radius: 0 0 0 50px;
+        animation: spin 3s linear infinite;
+    }
+    
+    .fanshaped-top-percentage {
+        margin-right: 40px;
+        width: 50px;
+        height: 50px;
+        border-radius: 100% 0 0 0/100%;
+        animation: spin-reverse 3s linear infinite;
+    }
+    
+    .fanshaped-right-percentage {
+        margin-right: 40px;
+        width: 50px;
+        height: 50px;
+        border-radius: 0 100% 0 0/100%;
+        animation: spin 3s linear infinite;
+    }
+    
+    .fanshaped-bottom-percentage {
+        margin-right: 40px;
+        width: 50px;
+        height: 50px;
+        border-radius: 0 0 100% 0/100%;
+        animation: spin-reverse 3s linear infinite;
+    }
+    
+    .fanshaped-left-percentage {
+        margin-right: 40px;
+        width: 50px;
+        height: 50px;
+        border-radius: 0 0 0 100%/100%;
+        animation: spin 3s linear infinite;
+    }
+    /*椭圆*/
+    
+    .ellipse-horizontal {
+        margin-right: 40px;
+        width: 100px;
+        height: 50px;
+        border-radius: 100%;
+        animation: spin-reverse 3s linear infinite;
+    }
+    
+    .ellipse-vertical {
+        margin-right: 40px;
+        width: 50px;
+        height: 100px;
+        border-radius: 100%;
+        animation: spin 3s linear infinite;
+    }
+    
+    .yellow {
+        background-color: yellow;
+    }
+    
+    .green {
+        background-color: green;
+    }
+    
+    .gray {
+        background-color: gray;
+    }
+    
+    .pink {
+        background-color: pink;
+    }
+    
+    .purple {
+        background-color: purple;
+    }
+    
+    .yellowgreen {
+        background-color: yellowgreen;
+    }
+    
+    .rotate {
+        transform: rotate(45deg);
+    }
+    </style>
+</head>
+
+<body>
+    <section class="part">
+        <h1>利用 border-radius 画圆</h1>
+        <div class="wrapper">
+            <div class="circle yellowgreen"></div>
+            <div class="circle yellow"></div>
+            <div class="circle green"></div>
+            <div class="circle pink"></div>
+            <div class="circle purple"></div>
+            <div class="circle gray"></div>
+        </div>
+    </section>
+    <section class="part">
+        <h1>利用 border-radius 固定值画半圆</h1>
+        <div class="wrapper">
+            <div class="half-circle-top yellowgreen"></div>
+            <div class="half-circle-right green"></div>
+            <div class="half-circle-bottom pink"></div>
+            <div class="half-circle-left purple"></div>
+        </div>
+    </section>
+    <section class="part">
+        <h1>利用 border-radius 百分比画半圆</h1>
+        <div class="wrapper">
+            <div class="half-circle-top-percentage gray"></div>
+            <div class="half-circle-right-percentage yellow"></div>
+            <div class="half-circle-bottom-percentage purple"></div>
+            <div class="half-circle-left-percentage green"></div>
+        </div>
+    </section>
+    <section class="part">
+        <h1>利用 border-radius 固定值画扇形</h1>
+        <div class="wrapper">
+            <div class="fanshaped-top yellowgreen"></div>
+            <div class="fanshaped-right green"></div>
+            <div class="fanshaped-bottom purple"></div>
+            <div class="fanshaped-left gray"></div>
+        </div>
+    </section>
+    <section class="part">
+        <h1>利用 border-radius 百分比画扇形</h1>
+        <div class="wrapper">
+            <div class="fanshaped-top-percentage yellowgreen"></div>
+            <div class="fanshaped-right-percentage green"></div>
+            <div class="fanshaped-bottom-percentage purple"></div>
+            <div class="fanshaped-left-percentage gray"></div>
+        </div>
+    </section>
+    <section class="part">
+        <h1>利用 border-radius 画椭圆</h1>
+        <div class="wrapper">
+            <div class="ellipse-horizontal yellowgreen"></div>
+            <div class="ellipse-vertical purple"></div>
+            <div class="ellipse-horizontal green rotate"></div>
+            <div class="ellipse-vertical gray rotate"></div>
+        </div>
+    </section>
+    <script>
+    // 随机获得一个颜色
+    function getRandomColor() {
+        return "#" + ("00000" + ((Math.random() * 16777215 + 0.5) >> 0).toString(16)).slice(-6);
+    }
+    var circles = document.getElementsByClassName('circle');
+    for(var i=0; i<circles.length; i++){
+    	var circle = circles[i];
+    	circle.style.backgroundColor = getRandomColor();
+    	circle.style.animation = 'bg 3s linear infinite'
+    }
+    setInterval(function(){
+    	location.reload();
+    },3000);
+    </script>
+</body>
+
+</html>

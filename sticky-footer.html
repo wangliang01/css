@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>sticky footer布局</title>
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    .clearfix{
+    	zoom: 1;
+    }
+    .clearfix:after{
+    	display: block;
+    	content: '';
+    	width: 0;
+    	height: 0;
+    	visibility: hidden;
+    	clear: both;
+    }
+    .detail {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(7, 17, 27, 0.5);
+        z-index: 2;
+        font-size: 206px;
+        color: #fff;
+        overflow: auto;
+    }
+    .detail-wrapper{
+    	min-height: 100%;
+    }
+    .detail-main{
+    	padding-top: 64px;
+    	padding-bottom: 64px;/* 关键部分*/
+    }
+    .detail-close{
+    	position: relative;
+    	width: 32px;
+    	height: 32px;
+    	background-color: #fff;
+    	margin: -64px auto 0;  /*关键部分*/
+    }
+    </style>
+</head>
+
+<body>
+	<div class="detail">
+	    <!-- 布局容器 -->
+	    <div class="detail-wrapper">
+	        <!-- 内容部分 -->
+	        <div class="detail-main">
+	        	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid eaque nulla, voluptas eligendi eius, modi ducimus iure dolor officia doloribus nihil fugit corporis tempore. Iusto earum illum ducimus iure, ex.lorem Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae dolor, quis est et quos debitis accusamus dolorem porro autem, corrupti placeat similique tenetur architecto maiores voluptas tempore nulla ipsum corporis. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias ipsa vitae, eius magnam odit quas eum animi provident molestiae dicta perferendis, ex odio officiis praesentium ratione voluptatem corporis at neque. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa magni aut eius distinctio enim commodi iure, eveniet expedita natus! Asperiores et voluptates voluptate sapiente saepe rerum, quia numquam ex architecto. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi sapiente nobis dolor sit provident, unde harum nulla autem nam minus, laboriosam repudiandae ratione ducimus, officia eum ipsum. Cumque, explicabo, incidunt. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio reprehenderit laudantium laborum repudiandae modi possimus explicabo, nulla expedita fuga nesciunt, sit minima ipsum. Ad architecto nisi, repellendus deserunt, ducimus facilis? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio iusto excepturi sequi aliquam, debitis incidunt, veritatis ad natus tempora temporibus dolor sed tempore eum mollitia, animi, a eaque. Soluta, iusto.
+	        </div>
+	    </div>
+	    <!-- 固定在底部部分 -->
+	    <div class="detail-close"></div>
+	</div>
+</body>
+
+</html>
