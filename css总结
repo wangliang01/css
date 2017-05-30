@@ -1,0 +1,356 @@
+css常用效果总结
+
+1.每逢大的空难的时候，很多网站变成了灰色，如何让网站快速变灰？用到的是css的filter功能
+
+html{
+	filter: grayscale(100%); 
+	-webkit-filter: grayscale(100%);
+	-moz-filter: grayscale(100%);
+	-ms-filter: grayscale(100%);
+	-o-filter: grayscale(100%);
+	filter:progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);
+  	-webkit-filter: grayscale(1);//谷歌浏览器
+}
+
+有些网站flash动画的颜色不能被css滤镜控制，可以在flash代码的和之间插入:
+<param value="false" name="menu">
+<param value="opaque" name="wmode">
+
+2.div可编辑，就是让一个div变成一个类似input输入框的效果。
+
+在div中添加contentEditable="true"属性就可以了，如下：
+
+<div id="div1" contentEditable="true"></div>
+
+
+3. 用些网站为了不让用户复制，设置了div禁止选择的功能，设置如下属性：
+
+unselectable="on" onselectstart="return false;"
+
+<div unselectable="on" onselectstart="return false;">
+akjsfdda;sfj</div>
+
+
+4.css中form表单两端对齐
+做form表彰的时候，前面经常有姓名，年龄，公司名称等等，有的是2个字，有的是4个字？如何让字对齐呢？有的人的做法是打几个空格，但是这样不是很准确，最好的办法是如下：
+
+.test1{
+	test-align: justify;
+	text-justify: distribute-all-lines; /*ie6-8*/
+	text-align-last: justify; /*ie9*/
+	-moz-text-align-last: justify; /*firefox*/
+	-webkit-text-align-last: justify; /*chrome*/
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+	/*chrome*/
+	.test1:after{
+		content: '.';
+		display: inline-block;
+		width: 100%;
+		height: 0;
+		overflow: hidden;
+	}
+}
+
+5.input声音录入按钮(仅支持谷歌)
+添加x-webkit-speech属性就可以了。代码如下：
+
+<input type="text" x-webkit-speech>
+
+6.给input的placeholder设置颜色
+::-webkit-input-placeholder {
+	color: #999;
+}
+
+::-moz-input-placeholder {
+	color: #999;
+}
+
+:-ms-input-placeholder{
+	color: #999;
+}
+
+7.css3实现一个div设置多张背景图片及background-image属性
+background:url("haoroomsCSS1_s.jpg") 0 0 no-repeat,
+           url("haoroomsCSS2_s.jpg") 200px 0 no-repeat,
+           url("haorooms.jpg") 400px 201px no-repeat;
+
+
+8.css选中状态修改，谷歌流动轴修改
+
+1）、滚动轴美化，一下代码是针对谷歌中滚动轴的设置美化，把它加到你的css中就可以了，代码如下：
+
+::-webkit-scrollbar{
+    padding-left:1px;
+    background-color:#fafafa;
+    overflow:visible;
+    width:9px;
+}
+::-webkit-scrollbar-thumb{
+    background-color:rgba(0, 0, 0, .1);
+    background-clip:padding-box;
+    border-left-width:2px;
+    min-height:10px;
+    box-shadow:inset 1px 1px 0 rgba(0, 0, 0, .1),inset 0 -1px 0 rgba(0, 0, 0, .07);
+}
+::-webkit-scrollbar-thumb:vertical:hover{
+    background-color:rgba(0, 0, 0, .2);
+}
+::-webkit-scrollbar-thumb:vertical:active{
+    background-color:rgba(0, 0, 0, .2);
+}
+::-webkit-scrollbar-button{
+    height:0;
+    width:0;
+}
+::-webkit-scrollbar-track{
+    background-clip:padding-box;
+    border:solid transparent;
+    border-width:0 0 0 2px;
+}
+::-webkit-scrollbar-corner{
+    background:transparent;
+}
+::-webkit-scrollbar-track-piece{
+margin: 10px 0;
+-webkit-border-radius: 0;
+-webkit-border-bottom-right-radius: 4px;
+-webkit-border-bottom-left-radius: 4px;
+}
+
+2）选中状态的修改
+很多网站，在选中文字后，不是默认的蓝色，改成了别的颜色，修改方法如下：
+::selection {
+	background: #fff;
+}
+
+
+9.css input[type=file]样式美化，input上传按钮美化
+
+
+10.css :after 和:before选择器
+用法1：在clear中使用
+.clearfix{
+	content: '.';
+	display: block;
+	width: 0;
+	height: 0;
+	visibility: hidden;
+	clear: both;
+	font-size: 0;
+}
+
+用法2：1像素边框
+.border-1px() {
+	position: relative;
+	&:after{
+		content: '.';
+		display: block;
+		position: absolute;
+		width: 100%;
+		height: 0;
+		left: 0;
+		bottom: 0;
+		border-top: 1px solid #eee;
+	}
+}
+
+.border-1px{
+	@media (-webkit-min-device-pixel-ratio: 1.5), (min-device-pixel-ratio: 1.5) {
+		&::after,&::before{
+			-webkit-transform: scaleY(0.7);
+			transform: scaleY(0.7);
+		}
+	}
+	@media (-webkit-min-device-pixel-ratio: 2), (min-device-pixel-ratio: 2) {
+		&::after,&::before{
+			-webkit-transform: scaleY(0.5);
+			transform: scaleY(0.5);
+		}
+	}
+	@media (-webkit-min-device-pixel-ratio: 3), (min-device-pixel-ratio: 3) {
+		&::after,&::before{
+			-webkit-transform: scaleY(0.3333);
+			transform: scaleY(0.3333);
+		}
+	}
+}
+
+11.透明度
+
+opacity: .9;
+filter: alpha(opacity=90);
+
+IE6,IE7中opacity是没有用的，在IE6中设置透明度的方法：
+.haorooms{
+	opacity: 0; 
+	cursor:pointer;  
+	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+	filter: alpha(opacity=0);
+}
+
+12.超出长度显示省略号
+
+单行文本显示...
+一般要给定宽度，然后给如下属性：
+display: block/inline-block;
+overflow: hidden;
+white-space: nowrap;
+text-overflow: ellipsis;
+
+多行文本显示...
+主要属性-webkit-line-clamp
+p {
+    overflow : hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+这个属性比较合适WebKit浏览器或移动端（绝大部分是WebKit内核的）浏览器。
+
+p {
+    position:relative;
+    line-height:1.4em;
+    /* 3 times the line-height to show 3 lines */
+    height:4.2em;
+    overflow:hidden;
+}
+p::after {
+    content:"...";
+    font-weight:bold;
+    position:absolute;
+    bottom:0;
+    right:0;
+    padding:0 20px 1px 45px;
+   // background:url(和网页背景颜色一样的一张背景图) repeat-y;
+  background-color:#fff;
+}
+
+13.阴影效果
+-webkit-box-shadow: 0 1px 1px rgba(0,0,0,.2);
+-moz-box-shadow: 0 1px 1px rgba(0,0,0,.2);
+box-shadow: 0 1px 1px rgba(0,0,0,.2);
+
+14.css强制换行和不换行
+自动换行
+
+div{
+	word-wrap: break-word;
+	word-break: normal;
+}
+
+强制英文单词断行
+div {
+	word-break: break-all;
+}
+
+强制不换行
+div{
+	white-space: nowrap;
+}
+
+15.css之hack
+hack: 
+* + - _ # \9 \0 \9\0
+IE7出现同样的问题的时候，我们可以用下划线，说不定IE6调好了，IE7也会跟着好了起来。
+
+经过我实践发现“-”中划线的确是IE6特有的hack,你可以在你的页面中用中划线随便写针对IE6问题的代码，其他浏览器不会出现问题。
+
+IE7特有的hack，一般认为是“*+”,星号和加号一起写。
+
+16: textarea禁止拖动
+resize: none;
+
+resize属性的取值：
+none：用户不能操纵机制调节元素的尺寸；
+both：用户可以调节元素的宽度和高度；
+horizontal：用户可以调节元素的宽度；
+vertical：让用户可以调节元素的高度；
+inherit：默认继承。
+
+17.div垂直居中的方法
+
+1）固定宽度的div垂直居中
+div{
+	positon: absolute;
+	left: 50%;
+	top: 50%;
+	width: 200px;
+	height: 100px;
+	margin-left: -100px;
+	margin-top: -50px;
+}
+
+2)不固定宽高的div垂直居中
+1)使用css3 transform属性
+div{
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate3d(-50%, -50%, 0);
+}
+
+2)使用table布局，此法有局限性 
+
+//父元素
+.something-semantic {
+   display: table;
+   width: 100%;
+}
+
+//子元素
+.something-else-semantic {
+   display: table-cell;
+   text-align: center;
+   vertical-align: middle;
+}
+
+3.flex弹性布局
+只要三句话就可以实现不定宽高水平垂直居中。
+
+display: flex;
+justify-content: center;//子元素水平居中
+align-items: center;//子元素垂直居中
+
+18.内部元素的垂直居中
+.outer{
+	width: 200px;
+	height: 300px;
+	overflow: hidden;
+	text-align: center;
+}
+
+.inner{
+	display: inline-block;
+	zoom: 1;
+	*display: inline; /*ie6,7*/
+	vertical-align: middle;
+}
+
+19.css3的前缀
+-webkit  /*为Chrome/Safari*/
+-moz  /*为Firefox*/
+-ms   /*为IE*/
+-o  /*为Opera*/
+
+20。css3的box-sizing
+使用box-sizing,会改变盒模型，
+box-sizing: border-box;  //IE盒模型
+box-sizing: content-box;  //标准盒模型
+
+
+21.模糊遮罩效果，模糊滤镜效果
+Blur：模糊效果。使选择区内的影像产生虚化的效果，可以平滑的转换影像中的生硬部分。
+-webkit-filter: blur(3px);
+-moz-filter: blur(3px);
+-o-filter: blur(3px);
+-ms-filter: blur(3px);
+filter: blur(3px);
+
+22.渐变效果
+background: -moz-linear-gradient(left top, #ace, #f96);
+background: -webkit-linear-gradient(left top, #ace, #f96);
+background: -o-linear-gradient(left top, #ace, #f96);

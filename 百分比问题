@@ -1,0 +1,24 @@
+css中padding,margin的百分比都是相对于元素的宽度而言的，无论是水平padding,maring,还是垂直padding,margin都是相对元素宽度的。
+
+translate3d()中的百分比是相对自身的宽度，高度的
+
+.box{
+	width: 100px;
+	height: 200px;
+	padding: 10%; /*等价于padding: 10px; */
+	margin: 10%; /*等价于margin: 10px; */
+}
+
+应用：
+
+实现等宽等高的头图效果
+
+<div id="container" class="placeholder"></div>
+
+#container {
+  width: 50%;  //父元素宽度的一半
+  background-color: red;  //仅为了方便演示
+}
+.placeholder {
+  padding-top: 50%; //与width: 50%;的值保持一致，也就是相当于父元素宽度的一半。
+}

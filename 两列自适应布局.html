@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>两列自适应布局</title>
+</head>
+<style>
+	*{
+		margin: 0;
+		padding: 0;
+	}
+	/*方法一：
+		左侧浮动，右侧BFC(块级格式化)
+	*/
+	/* .left{
+		float: left;
+		width: 200px;
+		height: 500px;
+		background-color: yellowgreen;
+	} */
+	/*.right{
+		overflow: hidden;
+		height: 500px;
+		background-color: green;
+	}*/
+
+	/*方法二
+		左侧浮动，右侧使用margin-left
+	*/
+	/*.right{
+		margin-left: 200px;
+		height: 500px;
+		background-color: green;
+	}*/
+	/*方法三
+		左侧定位，右侧使用margin-left
+	*/
+	/*.left{
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 200px;
+		height: 500px;
+		background-color: blue;
+	}*/
+	/*方法四
+		flex 布局
+	*/
+	.layout{
+		display: flex;
+	}
+	.left{
+		width: 200px;
+		height: 500px;
+		background-color: yellowgreen;
+	}
+	.right{
+		flex: 1;
+		background-color: pink;
+	}
+</style>
+<body>
+	<div class="layout">
+		<div class="left"></div>
+		<div class="right"></div>
+	</div>
+</body>
+</html>

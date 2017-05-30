@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>两列等高布局</title>
+</head>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+/*方法一：padding补偿法*/
+
+.container1 {
+    overflow: hidden;
+    /*超出部分隐藏*/
+}
+
+.left1 {
+    float: left;
+    width: 200px;
+    background-color: yellowgreen;
+    padding-bottom: 2000px;
+    margin-bottom: -2000px;
+}
+
+.right1 {
+    overflow: hidden;
+    background-color: pink;
+    padding-bottom: 2000px;
+    margin-bottom: -2000px;
+}
+
+
+/*方法二： 使用边框和定位/浮动模拟列等高*/
+.container2{
+	overflow: hidden;
+}
+.left2 {
+    float: left;
+    width: 200px;
+}
+
+.right2 {
+    position: left;
+    border-left: 200px solid yellowgreen;
+    background-color: pink;
+}
+
+
+/*方法三： 给容器div使用单独的背景色（流体布局）
+	注意：你有多少列就需要多少个容器，比如说我们说的三列，那么你就需要使用三个容器。著作权归作者所有。
+*/
+
+.container3 {
+    float: left;
+    width: 100%;
+    background-color: orange;
+    position: relative;
+    overflow: hidden;
+}
+
+.container3-3 {
+    float: left;
+    width: 100%;
+    overflow: hidden;
+    background-color: green;
+    right: 30%;
+}
+
+.left3 {
+    width: 66%;
+    float: left;
+    position: relative;
+    left: 32%;
+}
+
+.right3 {
+    width: 26%;
+    float: left;
+    position: relative;
+    left: 36%;
+}
+</style>
+
+<body>
+    <div class="container1">
+        <div class="left1">我是left</div>
+        <div class="right1">
+            我是right Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores magnam fugit esse sint labore architecto quis repellendus voluptas! Cupiditate fugit placeat natus quos sunt voluptas culpa officia quod sed nam.lore Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam accusamus dicta ullam consequuntur sunt incidunt, asperiores, odio delectus! Error id nemo aspernatur atque natus et sunt quam dolore iusto voluptatem.
+        </div>
+    </div>
+    <br>
+    <div class="container2">
+        <div class="left2">我是left</div>
+        <div class="right2">
+            我是right Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores magnam fugit esse sint labore architecto quis repellendus voluptas! Cupiditate fugit placeat natus quos sunt voluptas culpa officia quod sed nam.lore Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam accusamus dicta ullam consequuntur sunt incidunt, asperiores, odio delectus! Error id nemo aspernatur atque natus et sunt quam dolore iusto voluptatem. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae ex cum, quo et odit doloremque blanditiis iusto architecto ratione suscipit consectetur cupiditate! Eligendi qui, deserunt beatae ipsa quasi expedita perspiciatis.
+        </div>
+    </div>
+    <br>
+    <div class="container3">
+        <div class="container3-3">
+            <div class="left3">我是left</div>
+            <div class="right3">
+                我是right Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores magnam fugit esse sint labore architecto quis repellendus voluptas! Cupiditate fugit placeat natus quos sunt voluptas culpa officia quod sed nam.lore Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam accusamus dicta ullam consequuntur sunt incidunt, asperiores, odio delectus! Error id nemo aspernatur atque natus et sunt quam dolore iusto voluptatem. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae ex cum, quo et odit doloremque blanditiis iusto architecto ratione suscipit consectetur cupiditate! Eligendi qui, deserunt beatae ipsa quasi expedita perspiciatis.
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

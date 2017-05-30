@@ -1,0 +1,44 @@
+BFC(Block Formatting Content) 块级格式化上下文
+
+创建一个块级格式化上下文，只需满足以下任意一个条件即可：
+
+float的值不为none;
+
+position的值不为static或者 relative;
+
+display的值为table-cell, table-caption, inline-block, flex, inline-flex中的其中一个;
+
+overflow的值不为visible;
+
+
+BFC布局规则：
+
+1.内部的Box会在垂直方向，一个接一个地放置。
+
+2.Box垂直方向的距离由margin决定。属于同一个BFC的两个相邻Box的margin会发生重叠
+
+3.每个元素的margin box的左边， 与包含块border box的左边相接触(对于从左往右的格式化，否则相反)。即使存在浮动也是如此。
+
+4.BFC的区域不会与float box重叠。
+
+5.BFC就是页面上的一个隔离的独立容器，容器里面的子元素不会影响到外面的元素。反之也如此。
+
+6.计算BFC的高度时，浮动元素也参与计算
+
+应用：
+
+1. 自适应两栏布局
+
+原理：规则３：每个元素的margin box的左边， 与包含块border box的左边相接触(对于从左往右的格式化，否则相反)。即使存在浮动也是如此。
+
+规则４：BFC的区域不会与float box重叠。
+
+2. 清除内部浮动
+
+原理：规则6：计算BFC的高度时，浮动元素也参与计算
+
+3.防止垂直 margin 重叠
+
+原理：规则2：Box垂直方向的距离由margin决定。属于同一个BFC的两个相邻Box的margin会发生重叠
+
+
