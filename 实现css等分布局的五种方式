@@ -1,0 +1,224 @@
+思路1： float
+缺点：结构和样式存在耦合性，IE7浏览器对宽度百分比取值存在四舍五入的误差
+
+【1】float + padding + background-clip
+使用padding来实现子元素之间的间距，使用background-clip使子元素padding部分不显示背景
+
+<div class="parent" style="background-color: lightgrey;">
+    <div class="child" style="background-color: lightblue;">1</div>
+    <div class="child" style="background-color: lightgreen;">2</div>
+    <div class="child" style="background-color: lightsalmon;">3</div>
+    <div class="child" style="background-color: pink;">4</div>                
+</div>    
+
+
+.parent{
+    margin-right: -20px;
+    overflow: hidden;
+}
+.child{
+    float: left;
+    height: 100px;
+    width: 25%;
+    padding-right: 20px;
+    box-sizing: border-box;
+    background-clip: content-box;
+}
+
+【2】float + margin + calc
+使用margin实现子元素之间的间距，使用calc()函数计算子元素的宽度
+
+<div class="parent" style="background-color: lightgrey;">
+    <div class="child" style="background-color: lightblue;">1</div>
+    <div class="child" style="background-color: lightgreen;">2</div>
+    <div class="child" style="background-color: lightsalmon;">3</div>
+    <div class="child" style="background-color: pink;">4</div>                
+</div>  
+
+.parent{
+    margin-right: -20px;
+    overflow: hidden;
+}
+.child{
+    float: left;
+    height: 100px;
+    width: calc(25% - 20px);
+    margin-right: 20px;
+}
+
+【3】float + margin + (fix)
+使用margin实现子元素之间的间距，通过增加结构来实现兼容
+
+<div class="parent" style="background-color: lightgrey;">
+    <div class="child" style="background-color: blue;">
+        <div class="in" style="background-color: lightblue;">1</div>
+    </div>
+    <div class="child" style="background-color: green;">
+        <div class="in" style="background-color: lightgreen;">2</div>
+    </div>
+    <div class="child" style="background-color: orange;">
+        <div class="in" style="background-color: lightsalmon;">3</div>
+    </div>
+    <div class="child" style="background-color: red;">
+        <div class="in" style="background-color: pink;">4</div>
+    </div>                
+</div>    
+
+.parent{
+    overflow: hidden;
+    margin-right: -20px;
+}
+.child{
+    float: left;
+    width: 25%;
+}
+.in{
+    margin-right: 20px;
+    height: 100px;
+}
+
+
+
+【思路二】inline-block
+缺点：需要设置垂直对齐方式vertical-align，则需要处理换行符解析成空格的间隙问题。IE7-浏览器不支持给块级元素设置inline-block属性，兼容代码是display:inline;zoom:1;
+
+【1】inline-block + padding + background-clip
+
+<div class="parent" style="background-color: lightgrey;">
+    <div class="child" style="background-color: lightblue;">1</div>
+    <div class="child" style="background-color: lightgreen;">2</div>
+    <div class="child" style="background-color: lightsalmon;">3</div>
+    <div class="child" style="background-color: pink;">4</div>                
+</div>  
+
+.parent{
+    font-size: 0;
+    margin-right: -20px;
+    overflow: hidden;
+}
+.child{
+    display:inline-block;
+    vertical-align: top;
+    width: 25%;
+    padding-right: 20px;
+    box-sizing: border-box;
+    background-clip: content-box;
+    font-size: 16px;
+}
+
+【2】inline-block + margin + calc
+
+.parent{
+    margin-right: -20px;
+    font-size: 0;
+}
+.child{
+    display: inline-block;
+    vertical-align: top;
+    font-size: 16px;
+    height: 100px;
+    width: calc(25% - 20px);
+    margin-right: 20px;
+}
+
+【3】inline-block + margin + (fix)
+
+<div class="parent" style="background-color: lightgrey;">
+    <div class="child" style="background-color: blue;">
+        <div class="in" style="background-color: lightblue;">1</div>
+    </div>
+    <div class="child" style="background-color: green;">
+        <div class="in" style="background-color: lightgreen;">2</div>
+    </div>
+    <div class="child" style="background-color: orange;">
+        <div class="in" style="background-color: lightsalmon;">3</div>
+    </div>
+    <div class="child" style="background-color: red;">
+        <div class="in" style="background-color: pink;">4</div>
+    </div>                
+</div>    
+
+.parent{
+    margin-right: -20px;
+    font-size: 0;
+}
+.child{
+    display: inline-block;
+    vertical-align: top;
+    font-size: 16px;
+    width: 25%;
+}
+.in{
+    margin-right: 20px;
+    height: 100px;
+}
+
+【思路三】table
+缺点：元素被设置为table后，内容撑开宽度。若要兼容IE7-浏览器，需要改为<table>结构。table-cell元素无法设置margin，设置padding及background-clip也不可行
+
+<div class="parent" style="background-color: lightgrey;">
+    <div class="child" style="background-color: blue;">
+        <div class="in" style="background-color: lightblue;">1</div>
+    </div>
+    <div class="child" style="background-color: green;">
+        <div class="in" style="background-color: lightgreen;">2</div>
+    </div>
+    <div class="child" style="background-color: orange;">
+        <div class="in" style="background-color: lightsalmon;">3</div>
+    </div>
+    <div class="child" style="background-color: red;">
+        <div class="in" style="background-color: pink;">4</div>
+    </div>                
+</div>    
+
+
+.parent{
+    display: table;
+    width: calc(100% + 20px);
+    table-layout: fixed;
+}
+.child{
+    display: table-cell;
+    padding-right: 20px;
+}
+.in{
+    height: 100px;
+}
+
+【思路四】flex
+<div class="parent" style="background-color: lightgrey;">
+    <div class="child" style="background-color: lightblue;">1</div>
+    <div class="child" style="background-color: lightgreen;">2</div>
+    <div class="child" style="background-color: lightsalmon;">3</div>
+    <div class="child" style="background-color: pink;">4</div>                
+</div>  
+
+.parent{
+    display: flex;
+}
+.child{
+    flex:1;
+    height: 100px;
+}
+.child + .child{
+    margin-left: 20px;
+}
+
+【思路五】grid
+<div class="parent" style="background-color: lightgrey;">
+    <div class="child" style="background-color: lightblue;">1</div>
+    <div class="child" style="background-color: lightgreen;">2</div>
+    <div class="child" style="background-color: lightsalmon;">3</div>
+    <div class="child" style="background-color: pink;">4</div>                
+</div> 
+
+.parent{
+    display: grid;
+    grid-template-columns:repeat(4,1fr);
+    grid-gap:20px;
+    height: 100px;
+}
+
+个人觉得，第五种方式最为简单，如果在移动端，可放心使用
+场景：相册墙
+参考链接：http://www.cnblogs.com/xiaohuochai/p/5456695.html
